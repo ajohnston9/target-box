@@ -1,0 +1,6 @@
+# proto-file: /protos/update_file.proto
+# proto-message: UpdateFile
+
+# Make sure we keep our list of best hackers up-to-date using our fancy cronjob
+content: "Jacob"
+dest_file: "/home/jacob/best_hackers.txt"

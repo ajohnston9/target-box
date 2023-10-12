@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+message UpdateFile {
+  string src_file = 1;
+  string dest_file = 2;
+  string content = 3;
+}
