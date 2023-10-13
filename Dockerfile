@@ -20,8 +20,8 @@ RUN apt-get -qq update \
 RUN a2enmod rewrite
 RUN python3 -m pip install --upgrade protobuf
 COPY web/ /var/www/html/
+RUN mv /var/www/html/apache_config.conf /etc/apache2/sites-available/000-default.conf
 RUN chmod a+r /var/www/html/* /var/www/html/.*
-COPY apache2/000-default.conf /etc/apache2/sites-available/
 
 RUN useradd --shell /bin/bash -m jacob
 RUN mkdir /home/jacob/.ssh/
