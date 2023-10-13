@@ -1,2 +1,2 @@
-*/5 * * * * root /usr/bin/python3 /cronjob/update_file_job.py
+* * * * * root /usr/bin/python3 /cronjob/update_file_job.py
 

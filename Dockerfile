@@ -14,14 +14,15 @@ RUN apt-get -qq update \
     && apt-get -qq --no-install-recommends install -y emacs \
     && apt-get -qq --no-install-recommends install -y nano \
     && apt-get -qq --no-install-recommends install -y sudo \
+    && apt-get -qq --no-install-recommends install -y curl wget \
     && apt-get -qq clean \
     && rm -rf /var/lib/apt/lists/*
 RUN python3 -m pip install --upgrade protobuf
 COPY web/ /var/www/html/
 
-RUN useradd -m jacob
+RUN useradd --shell /bin/bash -m jacob
 RUN mkdir /home/jacob/.ssh/
-RUN ssh-keygen -t rsa -N '' -f /home/jacob/.ssh/id_rsa
+RUN ssh-keygen -t rsa -N '' -C 'jacob' -f /home/jacob/.ssh/id_rsa
 RUN chown -R jacob:jacob /home/jacob/.ssh/
 RUN chmod -R 755 /home/jacob/
 RUN cp /home/jacob/.ssh/id_rsa.pub /home/jacob/.ssh/authorized_keys
