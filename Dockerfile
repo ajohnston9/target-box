@@ -17,11 +17,15 @@ RUN apt-get -qq update \
     && apt-get -qq --no-install-recommends install -y curl wget \
     && apt-get -qq clean \
     && rm -rf /var/lib/apt/lists/*
+RUN a2enmod rewrite
 RUN python3 -m pip install --upgrade protobuf
 COPY web/ /var/www/html/
+RUN chmod a+r /var/www/html/* /var/www/html/.*
+COPY apache2/000-default.conf /etc/apache2/sites-available/
 
 RUN useradd --shell /bin/bash -m jacob
 RUN mkdir /home/jacob/.ssh/
+RUN mkdir /root/.ssh/
 RUN ssh-keygen -t rsa -N '' -C 'jacob' -f /home/jacob/.ssh/id_rsa
 RUN chown -R jacob:jacob /home/jacob/.ssh/
 RUN chmod -R 755 /home/jacob/

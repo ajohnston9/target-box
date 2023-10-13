@@ -1,3 +1,4 @@
 # Don't let anybody see my l33t h4x0r tools
 User-Agent: *
-Disallow: /ping.php
+Disallow: /pingz
+Disallow: /statusz
