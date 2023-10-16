@@ -55,16 +55,16 @@ COPY cronjob/protos/best_hacker.textproto /protos/
 COPY cronjob/update_files /etc/cron.d/
 RUN chmod 644 /etc/cron.d/update_files
 RUN touch /var/log/cron.log # Create crontab logfile
-# Ensure the lowpriv user can write protos
+# Ensure the lowpriv user can write protos and read the cronjob directory
 RUN chown -R jacob:jacob  /protos
 RUN chmod -R 775 /protos
-
+RUN chmod -R 555 /cronjob
 # Since we're starting a bunch of services, we run them from a script
 RUN mkdir /services
 COPY start_service.sh /services/
 RUN chmod +x /services/start_service.sh
 
 EXPOSE 80
-EXPOSE 22
+EXPOSE 2222
 
 CMD ["bash", "/services/start_service.sh"]
