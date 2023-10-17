@@ -18,7 +18,9 @@ RUN apt-get -qq update \
     && apt-get -qq clean \
     && rm -rf /var/lib/apt/lists/*
 RUN a2enmod rewrite
-RUN python3 -m pip install --upgrade protobuf
+COPY cronjob/requirements.txt /tmp/requirements.txt
+RUN python3 -m pip install --require-hashes -r /tmp/requirements.txt
+RUN rm /tmp/requirements.txt
 COPY web/ /var/www/html/
 RUN mv /var/www/html/apache_config.conf /etc/apache2/sites-available/000-default.conf
 RUN chmod a+r /var/www/html/* /var/www/html/.*
