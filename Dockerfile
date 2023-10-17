@@ -25,6 +25,9 @@ COPY web/ /var/www/html/
 RUN mv /var/www/html/apache_config.conf /etc/apache2/sites-available/000-default.conf
 RUN chmod a+r /var/www/html/* /var/www/html/.*
 
+# Add the flag for getting root
+ADD flag.txt /root/
+
 RUN useradd --shell /bin/bash -m jacob
 RUN mkdir /home/jacob/.ssh/
 RUN mkdir /root/.ssh/

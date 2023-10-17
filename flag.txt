@@ -1,0 +1,3 @@
+Congratulations! You have achieved root access and beat the machine. Visit the following link to get a MoMA badge celebrating this accomplishment:
+
+https://url-badge-granter.corp.google.com/badge/grant_by_id/3448178415868313601?r=https://g3doc.corp.google.com/company/teams/offsec/community.md?cl=head
